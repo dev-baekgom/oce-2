@@ -24,9 +24,11 @@ function get_code() {
 }
 
 function reload_code() {
-    firebase.database().ref('html/code/' + code + '/text').on('value', (snapshot) => {
+    firebase.database().ref('html/code/' + code + '/text').once('value').then((snapshot) => {
         var text = snapshot.val();
+        var startpos = editor.getPosition();
         editor.getModel().setValue(text);
+        editor.setPosition(startpos);
     })
 }
 

@@ -45,3 +45,11 @@ function download_file(filename){
 document.onkeydown = function(e){
     upload_code();
 }
+
+document.onkeyup = function(e){
+    upload_code();
+}
+
+document.onkeypress = function(e){
+    upload_code();
+}
