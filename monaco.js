@@ -14,7 +14,6 @@ require(['vs/editor/editor.main'], function () {
         language: 'html',
         value: editor_text
     });
-    Firepad.fromMonaco(firebase.database().ref("html/code/" + code + "/text"), editor);
 });
 
 var editor_text = [
