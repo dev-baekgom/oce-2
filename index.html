@@ -78,10 +78,56 @@
   <!--monaco-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/loader.js"></script>
-  
+
+  <!--firepad-->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.css" />
+  <script src="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.js"></script>
+
   <script src="monaco.js"></script>
   <script src="firebase.js"></script>
   <script src="script.js"></script>
+  <!-- Channel Plugin Scripts -->
+  <script>
+    (function() {
+      var w = window;
+      if (w.ChannelIO) {
+        return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+      }
+      var ch = function() {
+        ch.c(arguments);
+      };
+      ch.q = [];
+      ch.c = function(args) {
+        ch.q.push(args);
+      };
+      w.ChannelIO = ch;
+      function l() {
+        if (w.ChannelIOInitialized) {
+          return;
+        }
+        w.ChannelIOInitialized = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+        s.charset = 'UTF-8';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+      if (document.readyState === 'complete') {
+        l();
+      } else if (window.attachEvent) {
+        window.attachEvent('onload', l);
+      } else {
+        window.addEventListener('DOMContentLoaded', l, false);
+        window.addEventListener('load', l, false);
+      }
+    })();
+    ChannelIO('boot', {
+      "pluginKey": "a810580b-a607-45a7-91dc-ce512c921fd8"
+    });
+  </script>
+  <!-- End Channel Plugin -->
 </body>
 
 </html>
